@@ -82,8 +82,20 @@ private val apiKey: String by inject(qualifier = named("API_KEY"))
 
 private val staticToken: String = get(qualifier = named("STATIC_TOKEN"))
 ```
----
 
+---
+# ViewModel Dependencies
+
+### Provide
+```kotlin
+viewModel { MainViewModel(get()) }
+```
+### Inject
+```kotlin
+private val viewModel: MainViewModel by viewModel()
+```
+
+---
 # General Questions
 
 ### [1] What exception would you get when you inject a dependency without providing it?
