@@ -1,3 +1,4 @@
+[[toc]]
 # Step 1 :- Setting up Koin
 
 Add following dependencies to your app level **build.gradle** file.
@@ -66,7 +67,24 @@ private val loginRepository: LoginRepository  = get()
 ```
 
 ---
-## General Questions
+# Named Dependencies
+
+### Provide
+
+```kotlin
+single(qualifier = named("API_KEY")) { "1234567890" }
+
+factory(qualifier = named("STATIC_TOKEN")) { "AZAZIFIFGHT" }
+```
+### Inject
+```kotlin
+private val apiKey: String by inject(qualifier = named("API_KEY"))
+
+private val staticToken: String = get(qualifier = named("STATIC_TOKEN"))
+```
+---
+
+# General Questions
 
 ### [1] What exception would you get when you inject a dependency without providing it?
 `org.koin.core.error.NoBeanDefFoundException: No definition found for 'com.sample.koin.data.repository.LoginRepositoryImpl' has been found. Check your module definitions.`
